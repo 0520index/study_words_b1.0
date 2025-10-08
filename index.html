@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暗記カードアプリ</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- ホーム画面 -->
+    <div class="screen home active" id="home-screen">
+        <h1 class="app-title">単語帳</h1>
+        <div class="home-buttons">
+            <button id="start-learning">単語学習</button>
+            <button id="review-wrong">間違えた問題だけ復習</button>
+            <button id="add-card-home">カード追加</button>
+            <button id="load-json-home">JSON読み込み</button>
+        </div>
+    </div>
+
+    <!-- 学習画面 -->
+    <div class="screen learning" id="learning-screen">
+
+        <button class="home-btn" id="home-btn-learning">🏠 ホーム</button>
+
+        <div class="misc-controls-top">
+            <button id="shuffle-button">🔀 ランダム</button>
+            <button id="reset-button">⏹ 全カードに戻る</button>
+        </div>
+
+        <div class="card-container" id="card-container">
+            <div class="card">
+                <div class="face front"></div>
+                <div class="face back"></div>
+            </div>
+        </div>
+
+        <div class="card-controls">
+            <button id="prev-button">前のカード</button>
+            <button id="next-button">次のカード</button>
+        </div>
+
+        <div id="progress">0 / 0</div>
+        <div id="accuracy">正解率: 0%</div>
+
+        <div class="correct-wrong">
+            <button id="correct-button">正解</button>
+            <button id="wrong-button">間違えた</button>
+        </div>
+
+    </div>
+
+    <!-- カード追加画面 -->
+    <div class="screen add-card-screen" id="add-card-screen">
+        <button class="home-btn" id="home-btn-add">🏠 ホームに戻る</button>
+        <div class="add-card data-controls">
+            <input type="text" id="new-question" placeholder="問題">
+            <input type="text" id="new-answer" placeholder="答え">
+            <button id="add-button">追加</button>
+        </div>
+    </div>
+
+    <!-- JSON読み込み画面 -->
+    <div class="screen load-json-screen" id="load-json-screen">
+        <button class="home-btn" id="home-btn-json">🏠 ホームに戻る</button>
+        <div class="data-controls">
+            <label>
+                問題を読み込み
+                <input type="file" id="load-file" accept=".json">
+            </label>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

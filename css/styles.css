@@ -1,0 +1,360 @@
+/* --------------------
+   全体設定
+-------------------- */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #f0f4f8;
+    color: #333;
+}
+
+/* --------------------
+   タイトル
+-------------------- */
+.app-title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* --------------------
+   画面切替
+-------------------- */
+.screen {
+    display: none;
+    background-color: #f0f4f8;
+    /* 好きな色に変更可能 */
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ホーム画面 */
+#home-screen {
+    background: linear-gradient(135deg, #aec6d679 0%, #88abe0ea 100%);
+}
+
+/* 学習画面 */
+#learning-screen {
+    background: linear-gradient(135deg, #d1e0e6 0%, #99d4df 100%);
+}
+
+/* カード追加画面 */
+#add-card-screen {
+    background: linear-gradient(135deg, #e6f0ea 0%, #c3d9c8 100%);
+}
+
+/* JSON読み込み画面 */
+#load-json-screen {
+    background: linear-gradient(135deg, #e0dcd3 0%, #ecde8f 100%);
+}
+
+
+.screen.active {
+    display: block;
+}
+
+
+/* --------------------
+   ホーム画面
+-------------------- */
+.home-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.home-buttons button {
+    border-radius: 12px;
+    padding: 16px 30px;
+    font-size: 20px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 220px;
+}
+
+/* カテゴリごと色分け */
+#start-learning {
+    background: #2196f3;
+}
+
+#review-wrong {
+    background: #9c27b0;
+}
+
+#add-card-home {
+    background: #4caf50;
+}
+
+#load-json-home {
+    background: #ff9800;
+}
+
+/* ホバーアニメーション */
+.home-buttons button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --------------------
+   カード
+-------------------- */
+.card-container {
+    width: 90vw;
+    max-width: 400px;
+    height: 50vh;
+    max-height: 300px;
+    perspective: 1000px;
+    margin-bottom: 20px;
+    opacity: 1;
+    transition: opacity 0.2s ease, transform 0.6s;
+    position: relative;
+    z-index: 5;
+}
+
+.card-container:not(.flipped) .card {
+    transform: rotateY(0deg);
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.flipped .card {
+    transform: rotateY(180deg);
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(16px, 5vw, 24px);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: white;
+}
+
+.back {
+    transform: rotateY(180deg);
+    background-color: #e0f7fa;
+}
+
+/* --------------------
+   ホームボタン
+-------------------- */
+.home-btn {
+    position: sticky;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #607d8b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-size: 16px;
+    z-index: 10;
+}
+
+.home-btn:hover {
+    background-color: #455a64;
+}
+
+/* --------------------
+   上部補助操作: ランダム / 全カードに戻る
+-------------------- */
+.misc-controls-top {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.misc-controls-top button {
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    background-color: #9C27B0;
+    color: white;
+}
+
+/* --------------------
+   上段: 前 / 次
+-------------------- */
+.card-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.card-controls button {
+    width: 48%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* --------------------
+   下段: 正解 / 間違え
+-------------------- */
+.correct-wrong {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.correct-wrong button {
+    width: 48%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+#correct-button {
+    background-color: #2196F3;
+    color: white;
+}
+
+#wrong-button {
+    background-color: #F44336;
+    color: white;
+}
+
+/* --------------------
+   復習関連
+-------------------- */
+.wrong-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.wrong-controls button {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: #9C27B0;
+    color: white;
+}
+
+/* --------------------
+   ファイル入力非表示
+-------------------- */
+label input[type="file"] {
+    display: none;
+}
+
+.load-json-screen label {
+    display: block;
+    width: 250px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #ff9800;
+    color: white;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.load-json-screen label:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.add-card-screen .add-card input {
+    width: 80%;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.add-card-screen .add-card input:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+    outline: none;
+}
+
+.add-card-screen .add-card button {
+    width: 60%;
+    padding: 14px;
+    font-size: 18px;
+    border-radius: 12px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.add-card-screen .add-card button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+/* --------------------
+   フェード
+-------------------- */
+.fade {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* --------------------
+   進捗・正答率
+-------------------- */
+#progress,
+#accuracy {
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* --------------------
+   スマホ対応
+-------------------- */
+@media (max-width: 500px) {
+
+    .card-controls button,
+    .correct-wrong button,
+    .misc-controls-top button,
+    .wrong-controls button {
+        width: 48%;
+    }
+}

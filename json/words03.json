@@ -1,0 +1,12 @@
+[
+    { "question": "decide", "answer": "決める（きめる）", "category": "動詞" },
+    { "question": "suggest", "answer": "提案する（ていあんする）", "category": "動詞" },
+    { "question": "enjoy", "answer": "楽しむ（たのしむ）", "category": "動詞" },
+    { "question": "remember", "answer": "覚える（おぼえる）", "category": "動詞" },
+    { "question": "understand", "answer": "理解する（りかいする）", "category": "動詞" },
+    { "question": "ask", "answer": "尋ねる（たずねる）", "category": "動詞" },
+    { "question": "answer", "answer": "答える（こたえる）", "category": "動詞" },
+    { "question": "help", "answer": "助ける（たすける）", "category": "動詞" },
+    { "question": "learn", "answer": "学ぶ（まなぶ）", "category": "動詞" },
+    { "question": "study", "answer": "勉強する（べんきょうする）", "category": "動詞" }
+]
