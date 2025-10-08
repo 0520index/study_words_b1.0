@@ -146,27 +146,23 @@ function markCorrect() {
             localStorage.setItem("wrongCards", JSON.stringify(wrongCards));
         }
 
-        // cardsData（復習中の配列）からも削除
+        // cardsData（復習中の配列）からのみ削除
         cardsData.splice(currentCardIndex, 1);
-
-        // originalCards からも削除してローカルストレージに保存
-        const idxOriginal = originalCards.findIndex(c => c.question === card.question && c.answer === card.answer);
-        if (idxOriginal !== -1) {
-            originalCards.splice(idxOriginal, 1);
-            localStorage.setItem("cardsData", JSON.stringify(originalCards));
-        }
 
         if (cardsData.length === 0) {
             alert("復習が終了しました！");
-            resetCards();
+            resetCards(); // 全カードに戻す
             return;
         }
 
+        // 次のカードを表示
         showCard();
     } else {
+        // 全カード表示中は次に進むだけ
         nextCard();
     }
 }
+
 
 // --------------------
 // 復習モード
